@@ -10,4 +10,4 @@ namespace: cars
 images:
 - name: ms-find-car
   newName: alexsouzasilva/ms-find-car
-  newTag: latest
+  newTag: 0.0.19
