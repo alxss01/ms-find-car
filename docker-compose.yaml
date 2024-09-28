@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  app:
+    image: alexsouzasilva/ms-find-car:latest
+    container_name: ms-find-car
+    volumes:
+      - ./target/ms-find-car.jar:/app/app.jar
+    working_dir: /app
+    command: ["java", "-jar", "app.jar"]
+    ports:
+      - "8570:8570"
