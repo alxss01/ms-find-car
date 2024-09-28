@@ -1,0 +1,29 @@
+name: Continuous Integration And Continuous Delivery
+run-name: Executed by ${{ github.actor }}
+on: 
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+        inputs:
+            sonar-enabled:
+                description: 'Deseja executar o sonar?'
+                required: true
+                type: choice
+                options:
+                    - true
+                    - false
+            dp-check-enabled:
+                description: 'Deseja executar o dependency Check?'
+                required: true
+                type: choice
+                options:
+                    - true
+                    - false
+jobs:
+    call-build:
+        uses: alxss01/core-reusable/.github/workflows/java-build.yaml@main
+        with:
+            sonar-enabled: ${{ inputs.sonar-enabled }}
+            dp-check-enabled: ${{ inputs.dp-check-enabled }}
+        secrets: inherit
