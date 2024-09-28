@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ms-find-car
-        image: alexsouzasilva/ms-find-car:latest
+        image: ms-find-car
         resources:
           limits:
             memory: "256Mi"
