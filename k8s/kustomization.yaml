@@ -5,7 +5,7 @@ resources:
 - deployment.yaml
 - service.yaml
 
-namespace: kubeapp
+namespace: cars
 
 images:
 - name: ms-find-car
