@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-find-car
+spec:
+  #replicas: 2
+  selector:
+    matchLabels:
+      app: ms-find-car
+  template:
+    metadata:
+      labels:
+        app: ms-find-car
+    spec:
+      containers:
+      - name: ms-find-car
+        image: alexsouzasilva/ms-find-car:latest
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8570
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8570
+          initialDelaySeconds: 3
+          periodSeconds: 60
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8570
+          initialDelaySeconds: 3
+          periodSeconds: 60
